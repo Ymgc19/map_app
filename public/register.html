@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+</head>
+<body>
+  <h2>Register</h2>
+  <form id="registerForm">
+    <input type="email" id="email" placeholder="Email" required><br>
+    <input type="password" id="password" placeholder="Password" required><br>
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    // Firebase Auth 登録処理
+    firebase.initializeApp(firebaseConfig);
+    document.getElementById('registerForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = email.value;
+      const password = password.value;
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(() => location.href = "index.html")
+        .catch(alert);
+    });
+  </script>
+</body>
+</html>
